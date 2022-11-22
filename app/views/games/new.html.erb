@@ -1,0 +1,16 @@
+<div>
+  <ul>
+    <% @letters.each do |letter| %>
+    <div><%= letter %></div>
+    <% end %>
+  </ul>
+</div>
+<%# Form %>
+<form action="score" method="post" data-turbo="false">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters %>
+  <label for="query">What is the longest word you can find?</label>
+  <input id="query" name="query" type="text" />
+  <input name="commit" type="submit" value="Play !" data-disable-with="Search" />
+</form>
+<%# Necesito un post de @letters para que score pueda acceder a el %>
